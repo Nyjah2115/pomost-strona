@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
     <title>Pomost. Apartamenty nad Zatoką Gdańską</title>
     <meta name="description" content="Wybierz piętro i wejdź do środka. 48 mieszkań z tarasami między lasem a plażą w Gdyni." />
     <meta name="theme-color" content="#EEF2F1" />
@@ -21,17 +22,44 @@
     <meta name="twitter:image" content="https://nyjah2115.github.io/pomost-strona/assets/og.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@200;300;400;500&display=swap" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=2" />
+    <link rel="stylesheet" href="dv.css?v=2" />
     <link rel="icon" href="favicon.ico" sizes="32x32" />
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="icon" href="favicon-16.png" type="image/png" sizes="16x16" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="site.webmanifest" />
-    <script src="app.js" defer></script>
+    <script src="app.js?v=2" defer></script>
+    <script src="dv.js?v=2" defer></script>
   </head>
   <body class="pm-body">
+    <div class="dv-top">
+      <div class="dv-top-in">
+        <span class="dv-top-office">Biuro sprzedaży: pawilon przy budowie, Gdynia Orłowo</span>
+        <span class="dv-top-hours">pon.–pt. 9:00–18:00, sob. 10:00–14:00</span>
+        <a href="tel:+48600000000" class="dv-top-link"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M6.6 2.5l2 4.2-1.6 1.3a10 10 0 004.9 4.9l1.3-1.6 4.2 2-.6 3.2c-.1.6-.7 1-1.3 1A14.5 14.5 0 012.5 3.8c0-.6.4-1.2 1-1.3z" fill="currentColor"/></svg>600 000 000</a>
+        <a href="mailto:sprzedaz@twojadomena.pl" class="dv-top-link dv-top-mail"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2.5 4.5h15v11h-15z M2.5 5l7.5 6 7.5-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>sprzedaz@twojadomena.pl</a>
+      </div>
+    </div>
+    <header class="dv-head">
+      <div class="dv-head-in">
+        <a href="#mieszkania" class="pm-brand">
+          <svg class="pm-brand-mark" viewBox="0 0 376 572" aria-hidden="true" focusable="false"><g fill="currentColor"><rect width="58" height="572" rx="29" /><path d="M66 4H335a40 40 0 0 1 0 80H66z" /><path d="M66 105H311a39 39 0 0 1 0 78H66z" /><path d="M66 205H287a39 39 0 0 1 0 78H66z" /><path d="M66 304H245.5a38.5 38.5 0 0 1 0 77H66z" /><path d="M66 403H182.5a37.5 37.5 0 0 1 0 75H66z" /></g></svg>
+          <span class="pm-brand-word">Pomost</span>
+        </a>
+        <nav class="dv-menu" aria-label="Nawigacja główna">
+          <a href="#budynek">O inwestycji</a>
+          <a href="#lista">Mieszkania</a>
+          <a href="#standard">Standard</a>
+          <a href="#budowa">Postęp budowy</a>
+          <a href="#lokalizacja">Lokalizacja</a>
+          <a href="#zapisz">Kontakt</a>
+        </nav>
+        <a href="#zapisz" class="dv-cta">Umów prezentację</a>
+      </div>
+    </header>
     <main>
       <section id="mieszkania" class="pk" data-phase="outside" data-settling="false" aria-label="Wybór piętra">
         <div class="pk-stage">
@@ -62,70 +90,102 @@
                   </filter>
                 </defs>
               </svg>
-              <div class="pk-tag" aria-hidden="true"><span>6</span></div>
+              <div class="pk-tag" aria-hidden="true"><span>Piętro 6 · wolne: 4</span></div>
             </div>
             <div class="pk-scrim" aria-hidden="true"></div>
             <div class="pk-spots" data-on="false"></div>
           </div>
 
           <div class="pk-bar">
-            <nav class="pm-nav" aria-label="Nawigacja główna">
-              <a href="#mieszkania" class="pm-brand">
-                <svg class="pm-brand-mark" viewBox="0 0 376 572" aria-hidden="true" focusable="false"><g fill="currentColor"><rect width="58" height="572" rx="29" /><path d="M66 4H335a40 40 0 0 1 0 80H66z" /><path d="M66 105H311a39 39 0 0 1 0 78H66z" /><path d="M66 205H287a39 39 0 0 1 0 78H66z" /><path d="M66 304H245.5a38.5 38.5 0 0 1 0 77H66z" /><path d="M66 403H182.5a37.5 37.5 0 0 1 0 75H66z" /></g></svg>
-                <span class="pm-brand-word">Pomost</span>
-              </a>
-              <ul class="pm-nav-links">
-                <li><a href="#budynek">Budynek</a></li>
-                <li><a href="#udogodnienia">Udogodnienia</a></li>
-                <li><a href="#lokalizacja">Lokalizacja</a></li>
-              </ul>
-              <a href="#zapisz" class="pm-reg">Zapisz się</a>
-            </nav>
             <div class="pk-bar-inside">
               <button type="button" class="pk-back" data-back>
                 <span class="pk-back-arrow" aria-hidden="true"><i></i></span>
                 <span data-back-label>Wróć do budynku</span>
               </button>
-              <a href="#zapisz" class="pm-reg">Zapisz się</a>
+              <a href="#zapisz" class="dv-cta">Umów prezentację</a>
             </div>
           </div>
         </div>
 
         <div class="pk-panel" data-on="true">
-          <h1 class="pk-title"><span class="pm-sr">Pomost, apartamenty nad Zatoką Gdańską. </span>Wybierz piętro</h1>
-          <p class="pk-intro" data-intro>Najedź na piętro, a jego okna się rozjaśnią. Kliknij je albo ustaw suwak i wejdź przez szybę do środka.</p>
-          <div class="pk-readout">
-            <span class="pk-readout-label">Piętro</span>
-            <span class="pk-num" aria-hidden="true" data-num>6</span>
-          </div>
+        <p class="dv-kicker">Pomost · Gdynia Orłowo · 48 mieszkań</p>
+        <h1 class="pk-title"><span class="pm-sr">Pomost, apartamenty nad Zatoką Gdańską. </span>Wybierz piętro</h1>
+        <p class="pk-intro" data-intro>Najedź na piętro i kliknij, żeby zobaczyć wolne mieszkania.</p>
+        <div class="pk-readout">
+          <span class="pk-readout-label">Piętro</span>
+          <span class="pk-num" aria-hidden="true" data-num>6</span>
           <h2 class="pk-type" data-type>3 pokoje, narożne</h2>
-          <p class="pk-desc" data-desc>Od 68 do 84 m², taras od 16 do 24 m². Prosto na zatokę i molo.</p>
-          <dl class="pk-spec">
-            <div><dt>Cena</dt><dd data-price>od 1&nbsp;790&nbsp;000 zł</dd></div>
-            <div><dt>Wolne</dt><dd data-free>4 z 5</dd></div>
-          </dl>
-          <div class="pk-range">
-            <input type="range" min="1" max="9" step="1" value="6" aria-label="Piętro" aria-valuetext="Piętro 6, 3 pokoje, narożne" data-range />
-            <div class="pk-ticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span data-on="true">6</span><span>7</span><span>8</span><span>9</span></div>
-          </div>
+        </div>
+        <dl class="pk-spec">
+          <div><dt>Metraż</dt><dd data-area>68–84 m²</dd></div>
+          <div><dt>Taras</dt><dd data-terrace>16–24 m²</dd></div>
+          <div><dt>Cena od</dt><dd data-price>1&nbsp;790&nbsp;000 zł</dd></div>
+          <div><dt>Wolne</dt><dd data-free>4 z 5</dd></div>
+        </dl>
+        <p class="pk-desc" data-desc>Prosto na zatokę i molo.</p>
+        <div class="pk-range">
+          <input type="range" min="1" max="9" step="1" value="6" aria-label="Piętro" aria-valuetext="Piętro 6, 3 pokoje, narożne" data-range />
+          <div class="pk-ticks" aria-hidden="true"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span data-on="true">6</span><span>7</span><span>8</span><span>9</span></div>
+        </div>
+        <div class="dv-actions">
+          <a href="#lista" class="dv-btn" data-list>Pokaż wolne mieszkania (4)</a>
           <button type="button" class="pk-enter" data-enter data-loading="false">
             <i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i><i aria-hidden="true"></i>
-            <span data-enter-label>Wejdź</span><span class="pm-sr" data-enter-sr> na piętro 6</span>
+            <span data-enter-label>Wejdź do środka</span><span class="pm-sr" data-enter-sr> na piętro 6</span>
           </button>
         </div>
-
-        <div class="pk-caption" data-on="false" inert>
+      </div>
+      <div class="pk-caption" data-on="false" inert>
           <h2 class="pk-cap-title" tabindex="-1" data-cap-title>Piętro 6, trzy pokoje</h2>
           <p class="pk-cap-text" data-cap-text></p>
           <ul class="pk-spot-list" data-spot-list></ul>
         </div>
       </section>
-
+    <section class="dv-facts" aria-label="Inwestycja w liczbach">
+      <div class="dv-facts-in">
+        <div><b>48</b><span>mieszkań</span></div>
+        <div><b>9</b><span>pięter z tarasami</span></div>
+        <div><b>46–138 m²</b><span>metraże, 2–4 pokoje</span></div>
+        <div><b data-free-total>34</b><span>wolne mieszkania</span></div>
+        <div><b>IV kw. 2027</b><span>termin oddania</span></div>
+        <div><b>90 m</b><span>do plaży</span></div>
+      </div>
+    </section>
+    <section id="lista" class="dv-sec dv-apts" aria-labelledby="lista-title">
+      <div class="pm-wrap">
+        <div class="dv-sec-head">
+          <h2 id="lista-title" class="pm-h2">Mieszkania i ceny</h2>
+          <p class="dv-sec-lead">Ceny wszystkich mieszkań z historią zmian, zgodnie z przepisami o jawności cen. Stan na 16.11.2026. Kliknij mieszkanie, żeby zobaczyć rzut.</p>
+        </div>
+        <div data-apts></div>
+        <div class="dv-extras">
+          <h3 class="dv-h3">Miejsca postojowe i komórki lokatorskie</h3>
+          <table class="dv-table dv-table--small">
+            <thead><tr><th scope="col">Rodzaj</th><th scope="col">Cena</th><th scope="col">Dostępne</th></tr></thead>
+            <tbody>
+              <tr><td>Miejsce postojowe w hali garażowej</td><td>65&nbsp;000 zł</td><td>21 z 50</td></tr>
+              <tr><td>Miejsce postojowe z ładowarką do auta elektrycznego</td><td>79&nbsp;000 zł</td><td>3 z 6</td></tr>
+              <tr><td>Komórka lokatorska, 3,2–5,8 m²</td><td>od 22&nbsp;000 zł</td><td>12 z 32</td></tr>
+              <tr><td>Miejsce w rowerowni</td><td>w cenie mieszkania</td><td>dla każdego mieszkania</td></tr>
+            </tbody>
+          </table>
+          <p class="dv-note">Rejestr cen mieszkań, miejsc postojowych i komórek przekazujemy codziennie do serwisu dane.gov.pl.</p>
+        </div>
+      </div>
+    </section>
       <section id="budynek" class="tr" aria-labelledby="tr-title">
         <div class="tr-grid">
           <div class="tr-copy">
-            <h2 id="tr-title" class="pm-h2">Każde piętro ma swój pomost</h2>
-            <p class="pm-lead">Tarasy wysuwają się nad wydmy jak pomosty nad wodę. Im wyżej, tym głębiej cofa się elewacja, więc żaden taras nie zasłania widoku temu poniżej.</p>
+            <h2 id="tr-title" class="pm-h2">O inwestycji</h2>
+          <p class="pm-lead">Pomost to dziewięciopiętrowy budynek z 48 mieszkaniami w Gdyni Orłowie, 90 metrów od plaży. Każde mieszkanie ma taras od strony zatoki. Wyższe piętra są cofnięte, więc taras piętro wyżej nie zasłania widoku.</p>
+          <dl class="dv-about">
+            <div><dt>Deweloper</dt><dd>Twoja Firma Deweloperska sp. z o.o.</dd></div>
+            <div><dt>Rozpoczęcie budowy</dt><dd>wrzesień 2025</dd></div>
+            <div><dt>Termin oddania</dt><dd>IV kwartał 2027</dd></div>
+            <div><dt>Pozwolenie na budowę</dt><dd>prawomocne</dd></div>
+            <div><dt>Garaż podziemny</dt><dd>56 miejsc, w tym 6 z ładowarką</dd></div>
+            <div><dt>Ogrzewanie</dt><dd>pompa ciepła, ogrzewanie podłogowe</dd></div>
+          </dl>
             <dl class="tr-facts">
               <div class="tr-fact"><dt>pięter z tarasami</dt><dd>9</dd></div>
               <div class="tr-fact"><dt>mieszkań</dt><dd>48</dd></div>
@@ -138,10 +198,50 @@
           </figure>
         </div>
       </section>
-
+      <section id="standard" class="dv-sec dv-std" aria-labelledby="std-title">
+        <div class="pm-wrap">
+          <div class="dv-sec-head">
+            <h2 id="std-title" class="pm-h2">Standard</h2>
+            <p class="dv-sec-lead">Mieszkania oddajemy w stanie deweloperskim. Na życzenie wykończymy je pod klucz.</p>
+          </div>
+          <div class="dv-std-grid">
+            <div>
+              <h3 class="dv-h3">Budynek</h3>
+              <ul>
+                <li>Konstrukcja żelbetowa, ściany między mieszkaniami z bloczków silikatowych</li>
+                <li>Dwie ciche windy ze zjazdem do garażu</li>
+                <li>Hala garażowa przygotowana pod ładowarki do aut elektrycznych</li>
+                <li>Wideodomofon i wejście na kartę</li>
+                <li>Rowerownia i wózkownia na parterze</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="dv-h3">Mieszkania</h3>
+              <ul>
+                <li>Wysokość pomieszczeń 2,80&nbsp;m, na 9.&nbsp;piętrze do 3,40&nbsp;m</li>
+                <li>Okna aluminiowe z szybą trzywarstwową</li>
+                <li>Ogrzewanie podłogowe z pompy ciepła</li>
+                <li>Wentylacja mechaniczna z odzyskiem ciepła</li>
+                <li>Drzwi wejściowe antywłamaniowe klasy RC3</li>
+                <li>Taras z deską kompozytową, gniazdem i kranem</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="dv-h3">Bezpieczeństwo zakupu</h3>
+              <ul>
+                <li>Otwarty mieszkaniowy rachunek powierniczy</li>
+                <li>Składka na Deweloperski Fundusz Gwarancyjny w&nbsp;cenie</li>
+                <li>Płatności w transzach po kolejnych etapach budowy</li>
+                <li>Prospekt informacyjny do wglądu w biurze sprzedaży</li>
+              </ul>
+            </div>
+          </div>
+          <p class="dv-std-pack"><b>Wykończenie pod klucz</b> od 1&nbsp;650 zł/m². Projekt wnętrza i nadzór w cenie.</p>
+        </div>
+      </section>
       <section id="udogodnienia" class="am" aria-labelledby="am-title">
         <div class="pm-wrap am-head">
-          <h2 id="am-title" class="pm-h2">Dom zaczyna się przy plaży</h2>
+          <h2 id="am-title" class="pm-h2">Części wspólne</h2>
           <div class="am-ctrl">
             <span class="am-progress" aria-hidden="true"><i data-rail-marker></i></span>
             <button type="button" class="am-arrow" data-rail-step="-1" aria-label="Poprzednie"><span aria-hidden="true">←</span></button>
@@ -152,7 +252,6 @@
           <figure class="am-card" style="--w: clamp(280px, 34vw, 500px)">
             <img src="assets/photos/pool-900.webp" width="900" height="1117" alt="Kryty basen z przeszkloną ścianą, za nią wydmy i sosny" loading="lazy" decoding="async" />
             <figcaption>
-              <span class="am-idx">01</span>
               <h3 class="am-title">Basen z widokiem na wydmy</h3>
               <p class="am-text">Basen 18 m na parterze, przeszklony od strony wydm. Otwarty dla mieszkańców od 6:00 do 22:00.</p>
             </figcaption>
@@ -160,7 +259,6 @@
           <figure class="am-card" style="--w: clamp(250px, 27vw, 410px)">
             <img src="assets/photos/boardwalk-900.webp" width="900" height="1117" alt="Drewniana kładka wijąca się przez białe wydmy w stronę plaży" loading="lazy" decoding="async" />
             <figcaption>
-              <span class="am-idx">02</span>
               <h3 class="am-title">Kładka na plażę</h3>
               <p class="am-text">Prywatne zejście przez wydmy. Od drzwi klatki do brzegu morza jest 90 metrów.</p>
             </figcaption>
@@ -168,29 +266,69 @@
           <figure class="am-card" style="--w: clamp(280px, 37vw, 540px)">
             <img src="assets/photos/roof-900.webp" width="900" height="1117" alt="Ogród na dachu z trawami w kamiennych donicach i widokiem na morze i molo" loading="lazy" decoding="async" />
             <figcaption>
-              <span class="am-idx">03</span>
               <h3 class="am-title">Ogród na dachu</h3>
               <p class="am-text">Trawy, sosny górskie i długa ławka z widokiem na molo. Wspólny dla wszystkich mieszkańców.</p>
             </figcaption>
           </figure>
         </div>
       </section>
-
+      <section id="budowa" class="dv-sec dv-build" aria-labelledby="bud-title">
+        <div class="pm-wrap">
+          <div class="dv-sec-head">
+            <h2 id="bud-title" class="pm-h2">Postęp budowy</h2>
+            <p class="dv-sec-lead">Zdjęcia z placu budowy dodajemy co miesiąc. Ostatnia aktualizacja: 05.11.2026.</p>
+          </div>
+          <div class="dv-progress" role="img" aria-label="Zaawansowanie budowy 62 procent">
+            <div class="dv-progress-top"><b>Zaawansowanie prac: 62%</b><span>Termin oddania: IV kwartał 2027</span></div>
+            <div class="dv-progress-bar"><i style="width: 62%"></i></div>
+          </div>
+          <ol class="dv-timeline">
+            <li data-state="done">
+              <img src="assets/budowa/budowa-1-wykop.webp" width="1000" height="750" alt="Koparki w wykopie pod garaż podziemny" loading="lazy" decoding="async" />
+              <time>wrzesień 2025</time>
+              <b>Start budowy</b>
+              <p>Ogrodzenie terenu, ściany szczelinowe i wykop pod dwupoziomowy garaż.</p>
+            </li>
+            <li data-state="done">
+              <img src="assets/budowa/budowa-2-fundament.webp" width="1000" height="750" alt="Zbrojenie płyty fundamentowej" loading="lazy" decoding="async" />
+              <time>styczeń 2026</time>
+              <b>Płyta fundamentowa i garaż</b>
+              <p>Zbrojenie i betonowanie płyty, ściany garażu i strop nad halą garażową.</p>
+            </li>
+            <li data-state="done">
+              <img src="assets/budowa/budowa-3-konstrukcja.webp" width="1000" height="750" alt="Betonowa konstrukcja kolejnych pięter z szalunkami" loading="lazy" decoding="async" />
+              <time>czerwiec 2026</time>
+              <b>Konstrukcja do 5. piętra</b>
+              <p>Ściany i stropy kolejnych pięter, wspornik tarasów od strony zatoki.</p>
+            </li>
+            <li data-state="now">
+              <img src="assets/budowa/budowa-4-okna.webp" width="1000" height="750" alt="Rusztowania, ocieplenie i zamontowane okna" loading="lazy" decoding="async" />
+              <time>listopad 2026</time>
+              <b>Stan surowy, montaż okien</b>
+              <p>Konstrukcja zamknięta na 9. piętrze, trwa montaż okien i ocieplenie elewacji.</p>
+            </li>
+            <li data-state="next">
+              <time>IV kwartał 2027</time>
+              <b>Odbiory i przekazanie kluczy</b>
+              <p>Pozwolenie na użytkowanie, odbiory mieszkań z kupującymi i akty notarialne.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
       <section id="lokalizacja" class="lc" aria-labelledby="lc-title">
-        <figure class="lc-map">
-          <img src="assets/photos/aerial-2560.webp" srcset="assets/photos/aerial-1280.webp 1280w, assets/photos/aerial-2560.webp 2560w" sizes="100vw" width="2560" height="1086" alt="Wybrzeże z lotu ptaka: plaża, molo, las sosnowy i budynek Pomost blisko brzegu" loading="lazy" decoding="async" />
-          <span class="lc-pin" aria-hidden="true"><b>Pomost</b><i></i></span>
+        <figure class="lc-map dv-map">
+          <iframe title="Mapa: Gdynia Orłowo" src="https://www.openstreetmap.org/export/embed.html?bbox=18.5450%2C54.4705%2C18.5800%2C54.4870&amp;layer=mapnik&amp;marker=54.47805%2C18.56125" loading="lazy"></iframe>
         </figure>
         <div class="lc-panel">
-          <h2 id="lc-title" class="pm-h2">Morze za progiem</h2>
-          <p class="pm-lead">Pomost stoi między lasem a plażą w Gdyni. Do centrum dojedziesz kolejką SKM, a do molo dojdziesz brzegiem.</p>
+          <h2 id="lc-title" class="pm-h2">Lokalizacja</h2>
+          <p class="pm-lead">Gdynia Orłowo, między lasem a plażą. Do centrum Gdyni dojedziesz kolejką SKM, a do Sopotu dojdziesz brzegiem morza.</p>
           <ul class="lc-list">
-            <li><img src="assets/icons/wave.png" width="28" height="28" alt="" loading="lazy" /><span>Plaża</span><b>90 m</b></li>
-            <li><img src="assets/icons/pier.png" width="28" height="28" alt="" loading="lazy" /><span>Molo</span><b>450 m</b></li>
-            <li><img src="assets/icons/pine.png" width="28" height="28" alt="" loading="lazy" /><span>Las</span><b>2 min pieszo</b></li>
-            <li><img src="assets/icons/train.png" width="28" height="28" alt="" loading="lazy" /><span>Stacja SKM</span><b>8 min pieszo</b></li>
-            <li><img src="assets/icons/bike.png" width="28" height="28" alt="" loading="lazy" /><span>Bulwar</span><b>10 min rowerem</b></li>
-            <li><img src="assets/icons/plane.png" width="28" height="28" alt="" loading="lazy" /><span>Lotnisko</span><b>30 min autem</b></li>
+            <li><span>Plaża</span><b>90 m</b></li>
+            <li><span>Molo w Orłowie</span><b>450 m</b></li>
+            <li><span>Las</span><b>2 min pieszo</b></li>
+            <li><span>Stacja SKM Gdynia Orłowo</span><b>8 min pieszo</b></li>
+            <li><span>Bulwar Nadmorski</span><b>10 min rowerem</b></li>
+            <li><span>Lotnisko Gdańsk</span><b>30 min autem</b></li>
           </ul>
         </div>
       </section>
@@ -198,12 +336,14 @@
       <section id="zapisz" class="rg" aria-labelledby="rg-title">
         <div class="pm-wrap rg-grid">
           <div class="rg-copy">
-            <h2 id="rg-title" class="pm-h2">Zapisz się na prezentację</h2>
-            <p class="pm-lead">Pokażemy Ci wybrane piętro na miejscu i w makiecie. Odpowiadamy w ciągu jednego dnia roboczego.</p>
+            <h2 id="rg-title" class="pm-h2">Umów prezentację</h2>
+          <p class="pm-lead">Pokażemy Ci mieszkanie w pawilonie sprzedaży i na budowie. Oddzwonimy w ciągu jednego dnia roboczego.</p>
             <dl class="rg-office">
-              <div><dt>Pawilon sprzedaży</dt><dd>przy budowie, Gdynia</dd></div>
-              <div><dt>Godziny</dt><dd>pon.-pt. 9:00-18:00<br />sob. 10:00-14:00</dd></div>
-            </dl>
+            <div><dt>Biuro sprzedaży</dt><dd>pawilon przy budowie, Gdynia Orłowo</dd></div>
+            <div><dt>Godziny</dt><dd>pon.–pt. 9:00–18:00<br />sob. 10:00–14:00</dd></div>
+            <div><dt>Telefon</dt><dd><a href="tel:+48600000000">600 000 000</a></dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:sprzedaz@twojadomena.pl">sprzedaz@twojadomena.pl</a></dd></div>
+          </dl>
           </div>
 
           <form class="rg-form" name="zapis" method="POST" action="/" data-netlify="true" netlify-honeypot="firma" novalidate data-form>
@@ -224,7 +364,7 @@
               <p class="rg-err" id="f-phone-error" hidden></p>
             </div>
             <div class="rg-field">
-              <label for="f-floor">Interesujące piętro</label>
+              <label for="f-floor">Mieszkanie</label>
               <select id="f-floor" name="floor">
                 <option value="">Jeszcze nie wiem</option>
                 <option value="1">Piętro 1, 2 pokoje</option>
@@ -271,14 +411,16 @@
             <span class="pm-brand-word">Pomost</span>
           </a>
           <nav class="ft-nav" aria-label="Stopka">
-            <a href="#mieszkania">Mieszkania</a>
-            <a href="#budynek">Budynek</a>
-            <a href="#udogodnienia">Udogodnienia</a>
+            <a href="#lista">Mieszkania</a>
+            <a href="#budynek">O inwestycji</a>
+            <a href="#standard">Standard</a>
+            <a href="#budowa">Postęp budowy</a>
             <a href="#lokalizacja">Lokalizacja</a>
           </nav>
-          <a href="#zapisz" class="pm-reg">Zapisz się</a>
+          <a href="#zapisz" class="dv-cta">Umów prezentację</a>
         </div>
         <div class="ft-note">
+          <p>Twoja Firma Deweloperska sp. z o.o. · Mieszkaniowy rachunek powierniczy · Deweloperski Fundusz Gwarancyjny. Wizualizacje mają charakter poglądowy. Informacje na stronie nie są ofertą w rozumieniu art. 66 § 1 Kodeksu cywilnego.</p>
           <p>Projekt koncepcyjny. Budynek, ceny i wizualizacje są fikcyjne i nie stanowią oferty handlowej.</p>
           <p>© 2026 Pomost</p>
         </div>

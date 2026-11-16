@@ -4,16 +4,16 @@
 
   // Where the register form sends its data. "/" works on Netlify, which picks the form up
   // automatically (Forms tab). On other hosting paste a form endpoint, e.g. from Formspree.
-  const FORM_ENDPOINT = "/";
+  // Koncept: pusty adres = formularz niczego nie wysyła, tylko pokazuje podziękowanie.
+  const FORM_ENDPOINT = "";
 
   const IMG_W = 2752;
   const IMG_H = 1536;
   const CLIP_WAIT_MS = 9000;
   const CLIP_WATCHDOG_MS = 11000;
   const STILL_SIZES = "(max-width: 1023px) 130vw, 100vw";
-  const INTRO_POINTER =
-    "Najedź na piętro, a jego okna się rozjaśnią. Kliknij je albo ustaw suwak i wejdź przez szybę do środka.";
-  const INTRO_TOUCH = "Dotknij piętra albo przesuń suwak, a potem wejdź przez szybę do środka.";
+  const INTRO_POINTER = "Najedź na piętro i kliknij, żeby zobaczyć wolne mieszkania.";
+  const INTRO_TOUCH = "Dotknij piętra albo przesuń suwak, żeby zobaczyć wolne mieszkania.";
 
   const clip = (name) => ({
     desktop: `assets/video/${name}.mp4`,
@@ -89,6 +89,9 @@
     { n: 9, zone: "c", area: [128, 138], terrace: [34, 38], from: 3790000, free: 2, total: 2 },
   ];
 
+  // Dane pięter i typów mieszkań dla tabeli, karty mieszkania i listy w panelu (dv.js).
+  window.POMOST = { FLOORS, ZONES };
+
   // Slab edges traced on the exterior photo (left end, nearest corner, right end), from the
   // roof canopy down to the slab above the glazed ground floor. Floor n sits between
   // SLABS[9 - n] and SLABS[10 - n].
@@ -116,11 +119,11 @@
       .join(" ");
   }
 
-  // Where the floor number sits: just right of the building, level with the floor.
+  // Where the floor label sits: just left of the building (over the sea), level with the floor.
   function floorTag(n) {
     const up = SLABS[9 - n];
     const lo = SLABS[10 - n];
-    return { x: ((up[2][0] + 36) / IMG_W) * 100, y: ((up[2][1] + lo[2][1]) / 2 / IMG_H) * 100 };
+    return { x: ((Math.min(up[0][0], lo[0][0]) - 24) / IMG_W) * 100, y: ((up[0][1] + lo[0][1]) / 2 / IMG_H) * 100 };
   }
 
   const areaText = (f) => `Od ${f.area[0]} do ${f.area[1]} m², taras od ${f.terrace[0]} do ${f.terrace[1]} m².`;
@@ -316,11 +319,16 @@
       if (active !== shownActive) {
         shownActive = active;
         restartAnimation(numEl, String(active));
-        restartAnimation(tag.firstElementChild, String(active));
+        restartAnimation(tag.firstElementChild, `Piętro ${active} · wolne: ${floor.free}`);
         pick("[data-type]").textContent = activeZone.type;
-        pick("[data-desc]").textContent = `${areaText(floor)} ${activeZone.view}`;
-        pick("[data-price]").textContent = `od ${formatPrice(floor.from)} zł`;
+        pick("[data-desc]").textContent = activeZone.view;
+        pick("[data-area]").textContent = `${floor.area[0]}–${floor.area[1]} m²`;
+        pick("[data-terrace]").textContent = `${floor.terrace[0]}–${floor.terrace[1]} m²`;
+        pick("[data-price]").textContent = `${formatPrice(floor.from)} zł`;
         pick("[data-free]").textContent = `${floor.free} z ${floor.total}`;
+        const listLink = pick("[data-list]");
+        listLink.textContent = `Pokaż wolne mieszkania (${floor.free})`;
+        listLink.dataset.floor = String(active);
         range.setAttribute("aria-valuetext", `Piętro ${active}, ${activeZone.type}`);
         ticks.forEach((tick, index) => tick.setAttribute("data-on", String(index + 1 === active)));
       }
@@ -331,7 +339,7 @@
       pick("[data-intro]").textContent = fineQuery.matches ? INTRO_POINTER : INTRO_TOUCH;
       enterButton.dataset.loading = String(state.loading);
       enterButton.setAttribute("aria-busy", String(state.loading));
-      pick("[data-enter-label]").textContent = state.loading ? "Wczytuję" : "Wejdź";
+      pick("[data-enter-label]").textContent = state.loading ? "Wczytuję" : "Wejdź do środka";
       pick("[data-enter-sr]").textContent = ` na piętro ${state.selected}`;
 
       for (const id of ZONE_IDS) {
@@ -490,7 +498,10 @@
       busy = true;
       const id = FLOORS[n - 1].zone;
       Object.assign(state, { selected: n, hover: null, entered: n, note: null });
-      if (floorSelect) floorSelect.value = String(n);
+      if (floorSelect) {
+        const option = floorSelect.querySelector(`option[data-floor="${n}"]`);
+        if (option) floorSelect.value = option.value;
+      }
       prime(id);
       if (Math.abs(section.getBoundingClientRect().top) > 2) {
         section.scrollIntoView({ behavior: motionOk() ? "smooth" : "auto", block: "start" });
@@ -539,12 +550,20 @@
       update({ note: state.note === id ? null : id });
     }
 
-    // Mouse: a click goes straight in. Touch: the first tap picks the floor, the second enters.
+    // Mysz: klik pokazuje mieszkania piętra w panelu. Dotyk: pierwsze stuknięcie wybiera piętro, drugie pokazuje mieszkania.
+    // Przelot do środka startuje przyciskiem „Wejdź do środka”.
     function onFloorClick(n) {
       if (state.phase !== "outside") return;
-      if (fineQuery.matches || state.selected === n) enter(n);
-      else update({ selected: n });
+      if (fineQuery.matches || state.selected === n) {
+        update({ selected: n, hover: null });
+        document.dispatchEvent(new CustomEvent("pm:pietro", { detail: n }));
+      } else update({ selected: n });
     }
+
+    window.pomostEnter = (n) => enter(n);
+    window.pomostSelect = (n) => {
+      if (state.phase === "outside") update({ hover: null, selected: n });
+    };
 
     range.addEventListener("input", () => update({ hover: null, selected: Number(range.value) }));
     range.addEventListener("keydown", (event) => {
@@ -653,7 +672,7 @@
         const floor = field("floor").value;
         done.querySelector("[data-done-title]").textContent = `Dziękujemy, ${firstName}.`;
         done.querySelector("[data-done-text]").textContent =
-          `Odezwiemy się w ciągu jednego dnia roboczego, żeby ustalić termin prezentacji${floor ? ` na piętrze ${floor}` : ""}.`;
+          `Odezwiemy się w ciągu jednego dnia roboczego, żeby ustalić termin prezentacji${floor ? ` mieszkania ${floor}` : ""}.`;
         form.hidden = true;
         done.hidden = false;
       };
@@ -669,6 +688,11 @@
       submitLabel.textContent = "Wysyłam";
       fail.hidden = true;
       try {
+        if (!FORM_ENDPOINT) {
+          await new Promise((resolve) => window.setTimeout(resolve, 700));
+          finish();
+          return;
+        }
         const response = await fetch(FORM_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "application/json" },

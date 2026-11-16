@@ -1,0 +1,1117 @@
+/* Pomost v2: tabela mieszkań, karta z rzutem i historią cen, standard, postęp budowy.
+   Spokojny, „deweloperski” wygląd: białe tło, cienkie linie, statusy w kolorach. */
+
+/* ---------- sekcje ---------- */
+.dv-sec {
+  padding-block: clamp(64px, 7vw, 104px);
+  background: #fff;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.dv-sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 40px;
+  margin-bottom: 28px;
+}
+
+.dv-sec-lead {
+  max-width: 60ch;
+  margin: 0;
+  color: var(--pm-tide);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.dv-h3 {
+  margin: 0 0 14px;
+  color: var(--pm-sea);
+  font: 700 17px/1.3 var(--dv-head-font);
+}
+
+.dv-note {
+  margin: 14px 0 0;
+  color: var(--pm-tide);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Stare sekcje: mniej powietrza i bez dekoracji */
+.tr,
+.am,
+.rg {
+  padding-block: clamp(64px, 7vw, 104px);
+}
+
+.tr {
+  background: #fff;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.tr-accent {
+  display: none;
+}
+
+.tr-facts {
+  margin-top: 36px;
+}
+
+.tr-fact dd {
+  color: var(--pm-sea);
+  font: 700 clamp(30px, 3vw, 42px) / 1 var(--dv-head-font);
+  letter-spacing: 0;
+}
+
+.tr-fact dt {
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.am-head .pm-h2 {
+  max-width: none;
+}
+
+/* ---------- statusy ---------- */
+.dv-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  font: 600 11.5px/1.2 var(--dv-head-font);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.dv-pill::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dv-pill--wolne {
+  background: #e3f1e8;
+  color: var(--dv-ok);
+}
+
+.dv-pill--rezerwacja {
+  background: #fbefd6;
+  color: var(--dv-res);
+}
+
+.dv-pill--sprzedane {
+  background: #eceff0;
+  color: var(--dv-sold);
+}
+
+/* ---------- filtry ---------- */
+.dv-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  padding: 14px 16px;
+  border: 1px solid var(--pm-line);
+  border-bottom: 0;
+  border-radius: 4px 4px 0 0;
+  background: var(--pm-mist);
+}
+
+.dv-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.dv-chip {
+  height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--pm-line);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--pm-sea);
+  font: 600 12.5px/1 var(--dv-head-font);
+  cursor: pointer;
+}
+
+.dv-chip[aria-pressed="true"] {
+  border-color: var(--pm-sea);
+  background: var(--pm-sea);
+  color: #fff;
+}
+
+.dv-select,
+.dv-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pm-sea);
+  font: 600 12.5px/1 var(--dv-head-font);
+}
+
+.dv-select select {
+  height: 36px;
+  padding: 0 28px 0 10px;
+  border: 1px solid var(--pm-line);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--pm-sea);
+  font: 600 13px/1 var(--pm-font);
+}
+
+.dv-check input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--pm-sea);
+}
+
+.dv-count {
+  margin: 0 0 0 auto;
+  color: var(--pm-tide);
+  font-size: 13px;
+}
+
+/* ---------- tabela ---------- */
+.dv-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--pm-line);
+  border-radius: 0 0 4px 4px;
+}
+
+.dv-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--pm-sea);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dv-table th {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--pm-line);
+  background: #fff;
+  color: var(--pm-tide);
+  font: 600 11px/1.2 var(--dv-head-font);
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.dv-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--pm-line);
+  white-space: nowrap;
+}
+
+.dv-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dv-row {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.dv-row:hover {
+  background: #f4f7f6;
+}
+
+.dv-row--sprzedane {
+  color: var(--dv-sold);
+}
+
+.dv-row--sprzedane b {
+  color: var(--dv-sold);
+}
+
+.dv-c-price {
+  font-weight: 600;
+}
+
+.dv-c-act {
+  text-align: right;
+}
+
+.dv-sort {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.dv-sort::after {
+  content: " ↕";
+  opacity: 0.45;
+}
+
+.dv-sort[data-dir="asc"]::after {
+  content: " ↑";
+  opacity: 1;
+}
+
+.dv-sort[data-dir="desc"]::after {
+  content: " ↓";
+  opacity: 1;
+}
+
+.dv-mini {
+  height: 30px;
+  margin-left: 6px;
+  padding: 0 10px;
+  border: 1px solid var(--pm-sea);
+  border-radius: 2px;
+  background: var(--pm-sea);
+  color: #fff;
+  font: 600 11.5px/1 var(--dv-head-font);
+  cursor: pointer;
+}
+
+.dv-mini--ghost {
+  background: #fff;
+  color: var(--pm-sea);
+}
+
+.dv-extras {
+  margin-top: 44px;
+}
+
+.dv-table--small {
+  max-width: 760px;
+  border: 1px solid var(--pm-line);
+}
+
+.dv-table--small td:nth-child(2) {
+  font-weight: 600;
+}
+
+/* ---------- lista mieszkań piętra w panelu ---------- */
+.pk-panel[data-mode="lista"] > :not(.dv-fl):not(.dv-kicker) {
+  display: none;
+}
+
+.dv-fl-back {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pm-tide);
+  font: 600 12px/1 var(--dv-head-font);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.dv-fl-title {
+  margin: 12px 0 0;
+  color: var(--pm-sea);
+  font: 700 24px/1.1 var(--dv-head-font);
+}
+
+.dv-fl-meta {
+  margin: 6px 0 0;
+  color: var(--pm-tide);
+  font-size: 14px;
+}
+
+.dv-fl-list {
+  margin: 14px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--pm-line);
+  list-style: none;
+}
+
+.dv-fl-row {
+  display: grid;
+  grid-template-columns: 62px 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 4px;
+  border: 0;
+  border-bottom: 1px solid var(--pm-line);
+  background: none;
+  color: var(--pm-sea);
+  font: 400 13.5px/1.2 var(--pm-font);
+  font-variant-numeric: tabular-nums;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.dv-fl-row:hover {
+  background: var(--pm-mist);
+}
+
+.dv-fl-row b {
+  font: 700 13px/1 var(--dv-head-font);
+}
+
+.dv-fl-price {
+  font-weight: 600;
+}
+
+.dv-fl-row--sprzedane {
+  color: var(--dv-sold);
+}
+
+.dv-fl-foot {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.dv-fl-all {
+  color: var(--pm-sea);
+  font: 600 12.5px/1.3 var(--dv-head-font);
+  text-align: center;
+}
+
+/* ---------- karta mieszkania ---------- */
+.dv-modal {
+  width: min(1000px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 28px 30px 30px;
+  border: 0;
+  border-radius: 6px;
+  background: #fff;
+  color: var(--pm-sea);
+  box-shadow: 0 30px 80px rgba(14, 59, 71, 0.35);
+}
+
+.dv-modal::backdrop {
+  background: rgba(10, 30, 36, 0.55);
+}
+
+.dv-modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--pm-mist);
+  color: var(--pm-sea);
+  font: 400 26px/1 var(--pm-font);
+  cursor: pointer;
+}
+
+.dv-modal-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  padding-right: 50px;
+}
+
+.dv-modal-head h3 {
+  margin: 0;
+  font: 700 26px/1.15 var(--dv-head-font);
+}
+
+.dv-modal-sub {
+  margin: 8px 0 0;
+  color: var(--pm-tide);
+  font-size: 14.5px;
+}
+
+.dv-modal-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 28px;
+  margin-top: 22px;
+}
+
+.dv-plan-box {
+  margin: 0;
+  padding: 18px;
+  border: 1px solid var(--pm-line);
+  border-radius: 4px;
+  background: #fbfcfc;
+}
+
+.dv-plan-box figcaption {
+  margin-top: 10px;
+  color: var(--pm-tide);
+  font-size: 12px;
+}
+
+.dv-plan {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dv-plan-terr {
+  fill: #eef2f1;
+  stroke: #9fb2b6;
+  stroke-width: 0.4;
+}
+
+.dv-plan-deck {
+  stroke: #d3dedd;
+  stroke-width: 0.25;
+}
+
+.dv-plan-tlabel {
+  fill: var(--pm-tide);
+  font: 600 3.1px var(--dv-head-font);
+  text-anchor: middle;
+}
+
+.dv-plan-room {
+  fill: #fff;
+  stroke: #0e3b47;
+  stroke-width: 0.55;
+}
+
+.dv-plan-wall {
+  fill: none;
+  stroke: #0e3b47;
+  stroke-width: 1.6;
+}
+
+.dv-plan-win {
+  fill: #fff;
+  stroke: #0e3b47;
+  stroke-width: 0.3;
+}
+
+.dv-plan-gap {
+  fill: #fff;
+}
+
+.dv-plan-door {
+  fill: none;
+  stroke: #0e3b47;
+  stroke-width: 0.35;
+}
+
+.dv-plan-name {
+  fill: #0e3b47;
+  font: 600 3.1px var(--dv-head-font);
+  text-anchor: middle;
+}
+
+.dv-plan-area {
+  fill: #4a6b73;
+  font: 400 3px var(--pm-font);
+  text-anchor: middle;
+}
+
+.dv-plan-small {
+  font-size: 2.5px;
+}
+
+.dv-plan-entry,
+.dv-plan-n {
+  fill: #4a6b73;
+  font: 600 2.6px var(--dv-head-font);
+  text-anchor: middle;
+}
+
+.dv-plan-north {
+  fill: #0e3b47;
+}
+
+.dv-modal-spec {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 18px;
+  margin: 0;
+  padding: 18px;
+  border-radius: 4px;
+  background: var(--pm-mist);
+}
+
+.dv-modal-spec dt {
+  color: var(--pm-tide);
+  font: 600 10.5px/1.2 var(--dv-head-font);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dv-modal-spec dd {
+  margin: 4px 0 0;
+  font: 600 15px/1.25 var(--pm-font);
+}
+
+.dv-modal-spec .dv-big dd {
+  font: 700 22px/1.1 var(--dv-head-font);
+}
+
+.dv-modal-spec .dv-wide {
+  grid-column: 1 / -1;
+}
+
+.dv-link-btn {
+  margin-top: 14px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--pm-sea);
+  font: 600 13.5px/1.3 var(--dv-head-font);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.dv-hist-box {
+  margin-top: 10px;
+}
+
+.dv-hist {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.dv-hist th {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--pm-line);
+  color: var(--pm-tide);
+  font: 600 10.5px/1.2 var(--dv-head-font);
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.dv-hist td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.dv-up {
+  color: #a34328;
+  font-weight: 600;
+}
+
+.dv-down {
+  color: var(--dv-ok);
+  font-weight: 600;
+}
+
+.dv-modal-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.dv-btn-2 {
+  height: 48px;
+  border: 1.5px solid var(--pm-sea);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--pm-sea);
+  font: 600 13px/1 var(--dv-head-font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dv-btn-2:hover {
+  background: var(--pm-mist);
+}
+
+.dv-modal-actions .dv-link-btn {
+  margin-top: 4px;
+  justify-self: center;
+}
+
+/* ---------- O inwestycji ---------- */
+.dv-about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 28px;
+  margin: 28px 0 0;
+}
+
+.dv-about div {
+  padding: 12px 0;
+  border-top: 1px solid var(--pm-line);
+}
+
+.dv-about dt {
+  color: var(--pm-tide);
+  font: 600 10.5px/1.2 var(--dv-head-font);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dv-about dd {
+  margin: 5px 0 0;
+  color: var(--pm-sea);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* ---------- standard ---------- */
+.dv-std {
+  background: var(--pm-mist);
+}
+
+.dv-std-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.dv-std-grid > div {
+  padding: 24px;
+  border: 1px solid var(--pm-line);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.dv-std-grid ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dv-std-grid li {
+  position: relative;
+  padding: 9px 0 9px 18px;
+  border-top: 1px solid var(--pm-line);
+  color: var(--pm-sea);
+  font-size: 14.5px;
+  line-height: 1.45;
+}
+
+.dv-std-grid li::before {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  width: 8px;
+  height: 2px;
+  background: var(--pm-buoy);
+}
+
+.dv-std-pack {
+  margin: 20px 0 0;
+  color: var(--pm-sea);
+  font-size: 15px;
+}
+
+/* ---------- postęp budowy ---------- */
+.dv-progress {
+  margin-bottom: 28px;
+}
+
+.dv-progress-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  color: var(--pm-sea);
+  font: 600 14px/1.3 var(--dv-head-font);
+}
+
+.dv-progress-top span {
+  color: var(--pm-tide);
+  font-weight: 600;
+}
+
+.dv-progress-bar {
+  height: 10px;
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e2e9e8;
+}
+
+.dv-progress-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--pm-sea);
+}
+
+.dv-timeline {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.dv-timeline li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--pm-line);
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.dv-timeline img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.dv-timeline time {
+  margin: 14px 16px 0;
+  color: var(--pm-tide);
+  font: 600 11px/1.2 var(--dv-head-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dv-timeline b {
+  margin: 6px 16px 0;
+  color: var(--pm-sea);
+  font: 700 15px/1.3 var(--dv-head-font);
+}
+
+.dv-timeline p {
+  margin: 6px 16px 16px;
+  color: var(--pm-tide);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.dv-timeline li[data-state="now"] {
+  border-color: var(--pm-sea);
+  box-shadow: 0 0 0 1px var(--pm-sea);
+}
+
+.dv-timeline li[data-state="now"] time::after {
+  content: "teraz";
+  margin-left: 8px;
+  padding: 2px 6px;
+  border-radius: 2px;
+  background: var(--pm-buoy);
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+
+.dv-timeline li[data-state="next"] {
+  justify-content: center;
+  border-style: dashed;
+  background: var(--pm-mist);
+}
+
+/* ---------- lokalizacja: mapa OSM ---------- */
+.dv-map iframe {
+  display: block;
+  width: 100%;
+  height: clamp(380px, 40vw, 540px);
+  border: 0;
+}
+
+.lc-panel {
+  margin-top: clamp(-160px, -10vw, -80px);
+  background: #fff;
+  border: 1px solid var(--pm-line);
+  box-shadow: 0 18px 40px rgba(14, 59, 71, 0.12);
+}
+
+.lc-list li {
+  grid-template-columns: 1fr auto;
+}
+
+.lc-list b {
+  font-weight: 600;
+}
+
+/* ---------- kontakt ---------- */
+.rg-office a {
+  color: var(--pm-sea);
+  font-weight: 600;
+}
+
+/* ---------- wydruk karty mieszkania (zapis do PDF) ---------- */
+.dv-print {
+  display: none;
+}
+
+@media print {
+  body.dv-druk > *:not(.dv-print) {
+    display: none !important;
+  }
+
+  body.dv-druk .dv-print {
+    display: block;
+    padding: 0;
+    color: #0e3b47;
+    font: 11pt/1.4 "Open Sans", sans-serif;
+  }
+
+  .dv-print h1 {
+    margin: 4px 0 6px;
+    font: 700 20pt/1.2 "Montserrat", sans-serif;
+  }
+
+  .dv-print .dv-plan {
+    width: 100%;
+    max-height: 120mm;
+    margin: 6mm 0;
+  }
+
+  .dv-print-brand {
+    font: 700 9pt/1 "Montserrat", sans-serif;
+    letter-spacing: 0.2em;
+  }
+
+  .dv-print-price {
+    font-weight: 700;
+  }
+}
+
+/* ---------- tablet i telefon ---------- */
+@media (max-width: 1023px) {
+  .dv-modal-body {
+    grid-template-columns: 1fr;
+  }
+
+  .dv-std-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dv-timeline {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dv-count {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .dv-modal {
+    padding: 22px 18px 24px;
+  }
+
+  .dv-modal-head h3 {
+    font-size: 22px;
+  }
+
+  .dv-about {
+    grid-template-columns: 1fr;
+  }
+
+  .dv-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  /* Tabela jako lista kart */
+  .dv-table-wrap {
+    overflow: visible;
+    border: 0;
+  }
+
+  .dv-apts .dv-table thead {
+    display: none;
+  }
+
+  .dv-apts .dv-table,
+  .dv-apts .dv-table tbody {
+    display: block;
+  }
+
+  .dv-apts .dv-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+    padding: 14px 12px;
+    border: 1px solid var(--pm-line);
+    border-top: 0;
+  }
+
+  .dv-apts .dv-row td {
+    padding: 0;
+    border: 0;
+  }
+
+  .dv-apts .dv-c-id {
+    flex: 1 0 50%;
+    font-size: 15px;
+  }
+
+  .dv-apts .dv-c-floor,
+  .dv-apts .dv-c-rooms,
+  .dv-apts .dv-c-expo,
+  .dv-apts .dv-c-ppm {
+    display: none;
+  }
+
+  .dv-apts .dv-c-area,
+  .dv-apts .dv-c-terr {
+    color: var(--pm-tide);
+    font-size: 13px;
+  }
+
+  .dv-apts .dv-c-area {
+    order: 3;
+  }
+
+  .dv-apts .dv-c-terr {
+    order: 4;
+  }
+
+  .dv-apts .dv-c-terr::before {
+    content: "taras ";
+  }
+
+  .dv-apts .dv-c-status {
+    order: 2;
+  }
+
+  .dv-apts .dv-c-price {
+    order: 5;
+    margin-left: auto;
+    font-size: 15px;
+  }
+
+  .dv-apts .dv-c-act {
+    order: 6;
+    flex: 1 0 100%;
+    text-align: left;
+  }
+
+  .dv-apts .dv-c-act .dv-mini {
+    margin: 4px 6px 0 0;
+  }
+
+  .dv-filters {
+    border-radius: 4px;
+    border-bottom: 1px solid var(--pm-line);
+    margin-bottom: 0;
+  }
+}
+
+.dv-more {
+  display: block;
+  width: 100%;
+  height: 48px;
+  margin-top: 12px;
+  border: 1px dashed var(--pm-line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--pm-sea);
+  font: 600 13px/1 var(--dv-head-font);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.dv-more:hover {
+  border-style: solid;
+  background: var(--pm-mist);
+}
+
+.dv-more[hidden] {
+  display: none;
+}
+
+/* Odstępy sekcji: gęściej, jak na stronach deweloperów */
+.dv-sec,
+.tr,
+.am,
+.rg {
+  padding-block: clamp(56px, 5.5vw, 84px);
+}
+
+/* Części wspólne: tytuł i opis pod zdjęciem, bez numerów */
+.am-card figcaption {
+  display: block;
+}
+
+.am-title {
+  margin: 14px 0 6px;
+  color: var(--pm-sea);
+  font: 700 17px/1.3 var(--dv-head-font);
+  letter-spacing: 0;
+}
+
+.am-text {
+  max-width: 46ch;
+  margin: 0;
+  font-size: 14.5px;
+}
+
+/* Przycisk w stopce i w widoku mieszkania */
+.ft .dv-cta,
+.pk-bar-inside .dv-cta {
+  height: 42px;
+}
+
+/* Przyklejone menu nie może zasłaniać góry sekcji (przelot, linki z menu) */
+section[id] {
+  scroll-margin-top: var(--dv-head-h);
+}
+
+@media (max-width: 1023px) {
+  section[id] {
+    scroll-margin-top: 60px;
+  }
+}
+
+/* Podpis w mieszkaniu: ta sama czcionka co reszta nagłówków */
+.pk-cap-title {
+  font-family: var(--dv-head-font);
+  font-size: clamp(30px, 3.2vw, 50px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+/* W widoku mieszkania przycisk „Umów prezentację” jest już w menu */
+.pk-bar-inside .dv-cta {
+  display: none;
+}
+
+/* Telefon: tabela miejsc postojowych zawija tekst zamiast wychodzić poza ekran */
+@media (max-width: 767px) {
+  .dv-table--small {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .dv-table--small th,
+  .dv-table--small td {
+    padding: 10px 8px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 767px) {
+  /* 1. linia: numer i status, 2. linia: metraż, taras i cena */
+  .dv-apts .dv-c-id {
+    flex: 1 0 calc(100% - 140px);
+  }
+}
+
+.dv-modal-head h3:focus {
+  outline: none;
+}
+
+@media (max-width: 767px) {
+  /* Twarde złamanie linii po statusie: pseudo-element jako element flex na całą szerokość */
+  .dv-apts .dv-c-id {
+    flex: 1 0 auto;
+  }
+
+  .dv-apts .dv-row::after {
+    content: "";
+    order: 2;
+    flex-basis: 100%;
+    height: 0;
+  }
+}

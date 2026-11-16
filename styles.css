@@ -1761,3 +1761,425 @@ html {
 .pk[data-phase="moving"] .pk-back {
   visibility: hidden;
 }
+
+/* ======================================================================
+   v2 (16.11.2026): wygląd prawdziwej strony dewelopera.
+   Pasek biura sprzedaży, biały nagłówek z menu, panel piętra jak z systemu
+   sprzedaży, pasek z liczbami. Czcionki: Montserrat (nagłówki, etykiety)
+   i Open Sans (tekst) zamiast cienkiej Outfit i IBM Plex Mono.
+   ====================================================================== */
+:root,
+.pm-body {
+  --pm-font: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --pm-mono: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --dv-head-font: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+  --dv-top-h: 38px;
+  --dv-head-h: 72px;
+  --dv-ok: #2f7d4f;
+  --dv-res: #b9780b;
+  --dv-sold: #8d999c;
+}
+
+.pm-h2 {
+  font-family: var(--dv-head-font);
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.pm-brand-word {
+  font-family: var(--dv-head-font);
+  font-weight: 700;
+  letter-spacing: 0.28em;
+}
+
+/* Pasek biura sprzedaży */
+.dv-top {
+  background: var(--pm-sea);
+  color: rgba(255, 255, 255, 0.84);
+  font: 400 13px/1 var(--pm-font);
+}
+
+.dv-top-in {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  height: var(--dv-top-h);
+  padding: 0 var(--pm-gutter);
+}
+
+.dv-top-office {
+  margin-right: auto;
+}
+
+.dv-top-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.dv-top-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Nagłówek z menu */
+.dv-head {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: #fff;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.dv-head-in {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  height: var(--dv-head-h);
+  padding: 0 var(--pm-gutter);
+}
+
+.dv-menu {
+  display: flex;
+  gap: clamp(16px, 1.9vw, 30px);
+  margin-left: auto;
+}
+
+.dv-menu a {
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  color: var(--pm-sea);
+  font: 600 12.5px/1 var(--dv-head-font);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.2s ease;
+}
+
+.dv-menu a:hover {
+  border-bottom-color: var(--pm-buoy);
+}
+
+.dv-cta {
+  display: inline-flex;
+  align-items: center;
+  height: 44px;
+  padding: 0 20px;
+  border-radius: 2px;
+  background: var(--pm-buoy);
+  color: #fff;
+  font: 600 12.5px/1 var(--dv-head-font);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+
+.dv-cta:hover {
+  background: #c74a2d;
+}
+
+/* Scena z budynkiem pod nagłówkiem */
+.pk-bar {
+  padding-top: 18px;
+  background: none;
+}
+
+/* Panel piętra: typografia (wspólna dla komputera i telefonu) */
+.dv-kicker {
+  margin: 0 0 10px;
+  color: var(--pm-tide);
+  font: 600 11px/1.3 var(--dv-head-font);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.pk-title {
+  font: 700 26px/1.1 var(--dv-head-font);
+  letter-spacing: 0;
+}
+
+.pk-intro {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.pk-readout {
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--pm-line);
+}
+
+.pk-readout-label {
+  padding-bottom: 0;
+  font: 600 12px/1 var(--dv-head-font);
+  letter-spacing: 0.1em;
+}
+
+.pk-num {
+  color: var(--pm-sea);
+  font: 700 34px/1 var(--dv-head-font);
+  letter-spacing: 0;
+}
+
+.pk-type {
+  margin: 0 0 0 4px;
+  font: 600 16px/1.2 var(--dv-head-font);
+}
+
+.pk-spec {
+  gap: 12px 16px;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-top: 0;
+  border-radius: 3px;
+  background: var(--pm-mist);
+}
+
+.pk-spec dt {
+  font: 600 10.5px/1.2 var(--dv-head-font);
+  letter-spacing: 0.1em;
+}
+
+.pk-spec dd {
+  color: var(--pm-sea);
+  font: 600 16px/1.2 var(--pm-font);
+}
+
+.pk-desc {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+.pk-range {
+  margin-top: 14px;
+}
+
+.pk-ticks {
+  font: 600 11px/1 var(--dv-head-font);
+}
+
+.dv-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.dv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  border-radius: 2px;
+  background: var(--pm-sea);
+  color: #fff;
+  font: 600 13px/1 var(--dv-head-font);
+  letter-spacing: 0.06em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background-color 0.2s ease;
+}
+
+.dv-btn:hover {
+  background: #0a2c35;
+}
+
+.pk-enter {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  margin-top: 0;
+  border: 1.5px solid var(--pm-sea);
+  border-radius: 2px;
+  background: #fff;
+  color: var(--pm-sea);
+  font: 600 13px/1 var(--dv-head-font);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pk-enter:hover {
+  background: var(--pm-mist);
+}
+
+.pk-enter i {
+  display: none;
+}
+
+/* Pasek z liczbami pod zdjęciem */
+.dv-facts {
+  background: #fff;
+  border-bottom: 1px solid var(--pm-line);
+}
+
+.dv-facts-in {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: min(var(--pm-max), calc(100% - 2 * var(--pm-gutter)));
+  margin-inline: auto;
+}
+
+.dv-facts-in > div {
+  padding: 22px 18px;
+  border-left: 1px solid var(--pm-line);
+}
+
+.dv-facts-in > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.dv-facts b {
+  display: block;
+  color: var(--pm-sea);
+  font: 700 22px/1.15 var(--dv-head-font);
+}
+
+.dv-facts span {
+  display: block;
+  margin-top: 6px;
+  color: var(--pm-tide);
+  font: 600 11px/1.3 var(--dv-head-font);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Komputer: scena na wysokość ekranu pod nagłówkami, panel jak biała karta */
+@media (min-width: 1024px) {
+  .pk-stage {
+    height: calc(100dvh - var(--dv-top-h) - var(--dv-head-h));
+    min-height: 560px;
+  }
+
+  .pk-panel {
+    width: min(380px, 32vw);
+    max-height: calc(100dvh - var(--dv-top-h) - var(--dv-head-h) - 40px);
+    padding: 24px 26px 26px;
+    border: 1px solid var(--pm-line);
+    border-radius: 4px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(14, 59, 71, 0.18);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Tablet i telefon */
+@media (max-width: 1023px) {
+  .dv-top-office,
+  .dv-top-hours,
+  .dv-top-mail {
+    display: none;
+  }
+
+  .dv-top-in {
+    justify-content: center;
+  }
+
+  .dv-menu {
+    display: none;
+  }
+
+  .dv-head-in {
+    justify-content: space-between;
+    height: 60px;
+  }
+
+  .dv-cta {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 11.5px;
+  }
+
+  .dv-facts-in {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .dv-facts-in > div {
+    padding: 16px 12px;
+    border-top: 1px solid var(--pm-line);
+  }
+
+  .dv-facts-in > div:nth-child(-n + 3) {
+    border-top: 0;
+  }
+
+  .dv-facts-in > div:nth-child(3n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .dv-facts-in {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dv-facts-in > div:nth-child(3) {
+    border-top: 1px solid var(--pm-line);
+  }
+
+  .dv-facts-in > div:nth-child(3n + 1) {
+    padding-left: 12px;
+    border-left: 1px solid var(--pm-line);
+  }
+
+  .dv-facts-in > div:nth-child(2n + 1) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .dv-facts b {
+    font-size: 19px;
+  }
+}
+
+/* Etykieta piętra przy budynku: biała plakietka z numerem i liczbą wolnych */
+.pk-tag {
+  gap: 0;
+  text-shadow: none;
+}
+
+.pk-tag::before {
+  width: clamp(18px, 2vw, 32px);
+}
+
+.pk-tag span {
+  padding: 8px 12px;
+  border-radius: 3px;
+  background: #fff;
+  color: var(--pm-sea);
+  box-shadow: 0 6px 18px rgba(14, 59, 71, 0.22);
+  font: 700 13px/1 var(--dv-head-font);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+/* Etykieta po lewej stronie budynku: plakietka, potem kreska do piętra */
+.pk-tag {
+  flex-direction: row-reverse;
+  transform: translate(-100%, -50%);
+}
+
+/* Telefon: budynek wypełnia kadr, etykieta by się nie zmieściła; piętro pokazuje panel pod zdjęciem */
+@media (max-width: 1023px) {
+  .pk-tag {
+    display: none;
+  }
+}
+
+/* Telefon: panel ma tło mgły, więc dane piętra na białej karcie */
+@media (max-width: 1023px) {
+  .pk-spec {
+    background: #fff;
+  }
+}
