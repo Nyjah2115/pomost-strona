@@ -291,6 +291,10 @@
     // Fokus na tytule zamiast na „×”, żeby po kliknięciu nie świeciła obwódka przycisku.
     title.tabIndex = -1;
     title.focus({ preventScroll: true });
+    // Karta zawsze od góry. „Historia cen” z listy: na telefonie historia jest pod rzutem, więc przewijamy do niej.
+    dialog.scrollTop = 0;
+    const histStart = focusHistory && dialog.querySelector(".dv-hist-box")?.previousElementSibling;
+    if (histStart) dialog.scrollTop = histStart.getBoundingClientRect().top - dialog.getBoundingClientRect().top - 16;
   }
 
   // Wydruk karty: przeglądarka zapisuje go jako PDF.
@@ -363,6 +367,14 @@
     floorList.hidden = false;
     panel.dataset.mode = "lista";
     if (window.pomostSelect) window.pomostSelect(n);
+    // Telefon: panel jest pod zdjęciem, więc lista mogłaby się pojawić poza ekranem. Pokazujemy jej początek pod menu.
+    if (window.matchMedia("(max-width: 1023px)").matches) {
+      const top = floorList.getBoundingClientRect().top;
+      if (top < 0 || top > window.innerHeight * 0.55) {
+        const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        window.scrollTo({ top: top + window.scrollY - 76, behavior: smooth ? "smooth" : "auto" });
+      }
+    }
   }
 
   function closeFloor() {

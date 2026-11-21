@@ -1115,3 +1115,55 @@ section[id] {
     height: 0;
   }
 }
+
+/* ---------- Telefon (21.11): większe przyciski, czytelne drobne napisy, pola bez przybliżania na iPhonie ---------- */
+
+/* Liczby pod opisem budynku na jednej wysokości, nawet gdy podpis ma dwie linie */
+.tr-fact {
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  /* Numer telefonu w pasku: pole do stuknięcia na całą wysokość paska */
+  .dv-top-link {
+    align-self: stretch;
+    padding-inline: 12px;
+  }
+
+  /* Drobne etykiety co najmniej 12 px */
+  .pk-ticks,
+  .pk-spec dt,
+  .dv-pill,
+  .dv-timeline time,
+  .dv-modal-spec dt,
+  .dv-about dt {
+    font-size: 12px;
+  }
+
+  /* „Karta i rzut” i „Historia cen”: wygodne do stuknięcia kciukiem */
+  .dv-mini {
+    height: 40px;
+    padding: 0 14px;
+    font-size: 13px;
+  }
+
+  /* Pole 16 px: iPhone nie przybliża strony po stuknięciu w listę pięter */
+  .dv-filters select {
+    font-size: 16px;
+  }
+
+  /* Karta mieszkania: cena w jednej linii */
+  .dv-modal-spec .dv-big {
+    grid-column: 1 / -1;
+  }
+
+  /* Historia cen: kwoty w jednej linii, zawija się tylko opis zmiany */
+  .dv-hist td {
+    padding-inline: 4px;
+    white-space: nowrap;
+  }
+
+  .dv-hist td:last-child {
+    white-space: normal;
+  }
+}
